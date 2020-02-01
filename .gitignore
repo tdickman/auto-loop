@@ -1,3 +1,5 @@
 client_pb2.py
 client_pb2_grpc.py
+rpc_pb2.py
+rpc_pb2_grpc.py
 swaps.db

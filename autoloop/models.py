@@ -5,7 +5,8 @@ db = peewee.SqliteDatabase('swaps.db')
 
 def print_all():
     for swap in Swap.select():
-        print(swap.__dict__['__data__'])
+        if swap.state == 3:
+            print(swap.__dict__['__data__'])
 
 
 class BaseModel(peewee.Model):
@@ -16,6 +17,7 @@ class BaseModel(peewee.Model):
 class Swap(BaseModel):
     id = peewee.CharField(primary_key=True)
     chan_id = peewee.BigIntegerField(null=True)
+    pub_key = peewee.CharField(null=True)
     amount = peewee.BigIntegerField(null=True)
     state = peewee.IntegerField(null=True)
     start_time = peewee.BigIntegerField(null=True)
@@ -37,3 +39,9 @@ SwapState = [
 
 
 db.create_tables([Swap])
+
+# from playhouse.migrate import *
+# migrator = SqliteMigrator(db)
+# migrate(
+#     migrator.add_column('Swap', 'pub_key', peewee.CharField(null=True)),
+# )
