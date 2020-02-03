@@ -18,3 +18,8 @@ def get_channels():
 def get_channel(chan_id):
     request = ln.ChanInfoRequest(chan_id=chan_id)
     return stub.GetChanInfo(request, metadata=[('macaroon', macaroon)])
+
+
+def get_info():
+    request = ln.GetInfoRequest()
+    return stub.GetInfo(request, metadata=[('macaroon', macaroon)])

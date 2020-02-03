@@ -3,10 +3,18 @@ import sys
 from autoloop import lnd, loop, models
 
 
+NODE_PUBKEY = lnd.get_info().identity_pubkey
+
+
 @models.db.atomic('IMMEDIATE')
 def loop_out(chan_id, amount):
     response = loop.loop_out(chan_id, amount)
-    pub_key = lnd.get_channel(chan_id).node2_pub
+
+    channel = lnd.get_channel(chan_id)
+    pub_key = channel.node1_pub
+    if pub_key == NODE_PUBKEY:
+        pub_key = channel.node2_pub
+
     models.Swap.create(
         id=response.id,
         chan_id=chan_id,

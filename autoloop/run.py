@@ -75,7 +75,7 @@ def perform_loop_outs():
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print('python autoloop/run.py auto|loop_out')
+        print('python autoloop/run.py auto | loop_out | monitor | status')
         exit()
     action = sys.argv[1]
     if action == 'auto':
@@ -83,8 +83,6 @@ if __name__ == '__main__':
     elif action == 'loop_out':
         chan_id = int(sys.argv[2])
         handler.loop_out(chan_id, config.LOOP_OUT_AMOUNT)
-    elif action == 'print_all':
-        print_all()
     elif action == 'monitor':
         handler.persist_swap_updates()
     elif action == 'status':
