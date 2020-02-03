@@ -1,9 +1,9 @@
 # Auto Loop
 
-A tool for automating loop in and loop out operations for a node. Auto loop
-monitors the state of loop out operations and records them in a database. In
-addition, it provides a tool that can run and automatically attempt loop out
-operations based on the current status of your channels.
+A tool for automating loop out operations for a node. Auto loop monitors the
+state of loop out operations and records them in a database. In addition, it
+provides a tool that can run and automatically attempt loop out operations
+based on the current status of your channels.
 
 Desired channel states and maximum fees are set in `autoloop/config.py`.
 

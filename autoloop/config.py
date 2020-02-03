@@ -13,7 +13,7 @@ LOOP_OUT_MINIMUM = 0.2
 LOOP_OUT_AMOUNT = 2000000
 # Wait a given number of days after a failed loop out attempt
 # before trying again
-DAYS_BETWEEN_RETRIES = 0.3
+DAYS_BETWEEN_RETRIES = 0.5
 MAX_PENDING_LOOP_OPERATIONS = 2
 # Don't loop out any peer we have multiple channels with
 DISABLE_LOOP_FOR_DUPLICATE_CHANNELS = True
