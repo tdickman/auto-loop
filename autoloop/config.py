@@ -6,15 +6,19 @@ MAX_MINER_FEE = 3000
 CONF_TARGET = 20
 
 # Percentage at which point a loop out is attempted
-LOOP_OUT_PERCENTAGE_TRIGGER = 0.7
+LOOP_OUT_PERCENTAGE_TRIGGER = 0.6
 # Minimum utilization that can exist after a loop out operation
 # completes
 LOOP_OUT_MINIMUM = 0.2
 LOOP_OUT_AMOUNT = 2000000
+
+# swap_publication_deadline
+LOOP_OUT_PUBLICATION_DELAY_SECONDS = 30 * 60
+
 # Wait a given number of days after a failed loop out attempt
 # before trying again
-DAYS_BETWEEN_RETRIES = 0.5
-MAX_PENDING_LOOP_OPERATIONS = 2
+DAYS_BETWEEN_RETRIES = 0.2
+MAX_PENDING_LOOP_OPERATIONS = 4
 # Don't loop out any peer we have multiple channels with
 DISABLE_LOOP_FOR_DUPLICATE_CHANNELS = True
 

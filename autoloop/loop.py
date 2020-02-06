@@ -1,6 +1,7 @@
 import grpc
 import client_pb2 as loop
 import client_pb2_grpc as looprpc
+import time
 
 from . import config
 
@@ -25,6 +26,7 @@ def loop_out(chan_id, amount):
         max_miner_fee=config.MAX_MINER_FEE,
         loop_out_channel=chan_id,
         sweep_conf_target=config.CONF_TARGET,
+        swap_publication_deadline=int(time.time() + config.LOOP_OUT_PUBLICATION_DELAY_SECONDS)
     )
     response = stub.LoopOut(request)
     return response
