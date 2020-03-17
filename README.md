@@ -35,3 +35,8 @@ operations based on your `autoloop/config.py` file:
 ```
 pipenv python autoloop/run.py auto
 ```
+
+# TODO
+
+* Allow a loop out min and max. Start with max, and upon failure
+* try progressively smaller amounts each successive time

@@ -43,7 +43,7 @@ def get_eligible_channels():
 
         if most_recent_swap:
             # Pending swap, skip
-            if most_recent_swap.state < 3:
+            if most_recent_swap.state is not None and most_recent_swap.state < 3:
                 continue
 
             # Most recent swap failed, make sure enough time has elapsed
