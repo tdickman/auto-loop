@@ -1,12 +1,21 @@
 import peewee
 
-db = peewee.SqliteDatabase('swaps.db')
+db = peewee.SqliteDatabase("swaps.db")
 
 
 def print_all():
     for swap in Swap.select():
         if swap.state == 3:
-            print(swap.__dict__['__data__'])
+            print(swap.__dict__["__data__"])
+
+
+def export_to_csv():
+    keys = Swap.select()[0].__dict__["__data__"].keys()
+    print(",".join(keys))
+    for swap in Swap.select():
+        if swap.state == 3:
+            data = swap.__dict__["__data__"]
+            print(",".join([str(data[k]) for k in keys]))
 
 
 class BaseModel(peewee.Model):
@@ -29,12 +38,12 @@ class Swap(BaseModel):
 
 
 SwapState = [
-    'Initiated',
-    'Preimage Revealed',
-    'HTLC Published',
-    'Success',
-    'Failed',
-    'Invoice Settled',
+    "Initiated",
+    "Preimage Revealed",
+    "HTLC Published",
+    "Success",
+    "Failed",
+    "Invoice Settled",
 ]
 
 
@@ -45,3 +54,6 @@ db.create_tables([Swap])
 # migrate(
 #     migrator.add_column('Swap', 'pub_key', peewee.CharField(null=True)),
 # )
+
+if __name__ == "__main__":
+    export_to_csv()
